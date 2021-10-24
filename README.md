@@ -1,2 +1,2 @@
-# dive
+# diver
 general knowledge
