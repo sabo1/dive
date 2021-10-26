@@ -64,7 +64,7 @@ session_start();
                             </div>
                             <div class="col-xl-6 ml-auto mr-auto">
                                 <div class="card p-4 rounded-plus bg-faded">
-                                    <!-- по схем 4 -->
+                                    <!-- по схеме 4 -->
                                     <!-- проверка есть такой ключ как danger -->
                                     <?php if(isset($_SESSION["danger"])):?>
                                         
