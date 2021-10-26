@@ -1,3 +1,8 @@
+<?php
+session_start();
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -59,9 +64,20 @@
                             </div>
                             <div class="col-xl-6 ml-auto mr-auto">
                                 <div class="card p-4 rounded-plus bg-faded">
-                                    <div class="alert alert-danger text-dark" role="alert">
-                                        <strong>Уведомление!</strong> Этот эл. адрес уже занят другим пользователем.
-                                    </div>
+                                    <!-- по схем 4 -->
+                                    <!-- проверка есть такой ключ как danger -->
+                                    <?php if(isset($_SESSION["danger"])):?>
+                                        
+                                        <div class="alert alert-danger text-dark" role="alert">
+                                            <!-- <strong>Уведомление!</strong> -->
+                                            <?php echo $_SESSION["danger"];
+                                            //  удаляет от повторение сообщение 'Этот эл. адрес уже занят другим пользователем.', то есть вывел 1 раз на экран и после обнавление страницы, исчезает
+                                            unset($_SESSION["danger"]);
+                                            ?>
+                                        </div>
+
+                                    <?php endif;?>
+                                
                                     <form id="js-login" novalidate="" action="">
                                         <div class="form-group">
                                             <label class="form-label" for="emailverify">Email</label>

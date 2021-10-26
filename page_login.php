@@ -1,3 +1,7 @@
+<?php
+session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -33,9 +37,23 @@
             </a>
         </div>
         <div class="card p-4 border-top-left-radius-0 border-top-right-radius-0">
-            <div class="alert alert-success">
+
+        <!--             <div class="alert alert-success">
                 Регистрация успешна
             </div>
+         -->        
+        
+             <?php if(isset($_SESSION["success"])):?>
+                                        
+                <div class="alert alert-success text-dark" role="alert">
+                     <?php echo $_SESSION["success"];
+                    //  удаляет от повторение сообщение "Регистрация успешна", то есть вывел 1 раз на экран и после обнавление страницы, исчезает
+                     unset($_SESSION["success"]) ;?>
+                </div>
+
+            <?php endif;?>
+                                
+
             <form action="">
                 <div class="form-group">
                     <label class="form-label" for="username">Email</label>

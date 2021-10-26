@@ -1,6 +1,8 @@
 <?php
 
-$email = "samal@assmail.com";
+session_start();
+
+$email = "Dana@assmail.com";
 $password = "woman";
 
 // 1. добавление пользователя в БД
@@ -29,16 +31,17 @@ echo '</pre>'; */
 // }
 // die;
 // теперь основной код 
-if(!empty($users)){
-    $_SESSION['danger']='Этот эл. адрес уже занят другим пользователем.';
-    header("Location: /page_register.php");
+if(!empty($users)){ // if(!empty = если не пустo
+    $_SESSION["danger"]='Этот эл. адрес уже занят другим пользователем.';
+    // перенаправляет header на страницу ...
+    header("Location: ./page_register.php");
     exit;
-}else {
+}/* else {
     echo "Можно зарегестрироваться";
 }
-die;
+die; */
 
-// следуюшее подготовить сам запрос, :email - это метки
+// следуюшее подготовить сам запрос, :email - это метки,подробности в ПДО 
 $sql = "INSERT INTO first_project (email, password) VALUES (:email, :password)";
 
 // подготавлеваем запрос
@@ -51,3 +54,7 @@ $statement->execute([
     // 2. здесь пароль закрыть в базе, даже администратор не видет
     "password" => password_hash($password, PASSWORD_DEFAULT)
 ]);
+    
+$_SESSION["success"] = "Регистрация успешна";
+header("Location: ./page_login.php");
+exit;
