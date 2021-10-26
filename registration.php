@@ -1,6 +1,6 @@
 <?php
 
-$email = "sapura@assmail.com";
+$email = "samal@assmail.com";
 $password = "woman";
 
 // 1. добавление пользователя в БД
@@ -13,21 +13,32 @@ $sql = "SELECT * FROM first_project WHERE email=:email";
 
 $statement = $pdo->prepare($sql);
 $statement->execute(["email" => $email]);
-// возвращает пользователя
+// возвращает пользователя, fetch - 1, fetchAll - выводить всех пользователей
 $users = $statement->fetch(PDO::FETCH_ASSOC);
 // внизу проверка
 /* echo '<pre>';
     print_r($users);
 echo '</pre>'; */
 
-// теперь скрипт на проверку польвателя
+// теперь скрипт на проверку пользователя
+// внизу пример 
+// if(!empty($users)){
+//     echo "Эл. адрес уже занят!";
+// }else {
+//     echo "Можно зарегестрироваться";
+// }
+// die;
+// теперь основной код 
 if(!empty($users)){
-    echo "Эл. адрес уже занят";
+    $_SESSION['danger']='Этот эл. адрес уже занят другим пользователем.';
+    header("Location: /page_register.php");
+    exit;
+}else {
+    echo "Можно зарегестрироваться";
 }
-    echo "Можно зарегестриватр";
+die;
 
-
-// следуюшее подготовить сам запрос :email - это метки
+// следуюшее подготовить сам запрос, :email - это метки
 $sql = "INSERT INTO first_project (email, password) VALUES (:email, :password)";
 
 // подготавлеваем запрос
