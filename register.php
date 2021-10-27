@@ -9,7 +9,8 @@ $password = "woman";
 // для этого нужно соедениться с БД
 $pdo = new PDO("mysql:host=localhost;dbname=rahimcourseseptember", "root", "");
 
-// внизу проверяет на наличие пользователя в БД, если найдеться такой чувак, то код начиная с $sql = "INSERT INTO до PASSWORD_DEFAULT); ]); не выполнять! 
+// внизу проверяет на наличие пользователя в БД, если найдеться такой чувак, то код начиная 
+// с $sql = "INSERT INTO до PASSWORD_DEFAULT); ]); не выполнять! 
 
 $sql = "SELECT * FROM first_project WHERE email=:email";
 
