@@ -1,3 +1,8 @@
+<?php
+session_start();
+require "register.php";
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -34,7 +39,9 @@
         </div>
         <div class="card p-4 border-top-left-radius-0 border-top-right-radius-0">
             <div class="alert alert-success">
-                Регистрация успешна
+            
+            <?php echo set_flash_message("success", "Регистрация успешна");?>    
+            
             </div>
             <form action="">
                 <div class="form-group">

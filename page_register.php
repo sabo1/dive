@@ -1,3 +1,8 @@
+<?php
+session_start();
+require "functions.php";
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -59,8 +64,11 @@
                             </div>
                             <div class="col-xl-6 ml-auto mr-auto">
                                 <div class="card p-4 rounded-plus bg-faded">
+                                    
+                                    <?php echo display_flash_message("danger");?>
+
                                     <div class="alert alert-danger text-dark" role="alert">
-                                        <strong>Уведомление!</strong> Этот эл. адрес уже занят другим пользователем.
+                                        <strong>Уведомление!</strong> <?php echo set_flash_message("danger");?>
                                     </div>
                                     <form id="js-login" novalidate="" action="">
                                         <div class="form-group">
